@@ -1,6 +1,6 @@
 'use strict';
 require('dotenv').config();
-const server = require('./src/server.js')
+const {startup , app} = require('./src/server.js')
 // Start up DB Server
 const mongoose = require('mongoose');
 const options = {
@@ -12,5 +12,5 @@ const options = {
 mongoose.connect(process.env.MONGODB_URI, options).then(() => {
   // Start the web server
   console.log('Connected to database');
-  server.startup(process.env.PORT);
+  startup(process.env.PORT);
 }).catch(err => console.log(err.message, "could not connect to data base"));
